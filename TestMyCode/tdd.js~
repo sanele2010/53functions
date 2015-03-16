@@ -1,0 +1,56 @@
+var passes= 0;
+var fails = 0;
+
+var nameOfTest = "";
+
+var assert = {
+
+ 
+
+	equals:function (expectedResult, returnedResult) {
+		// body...
+		
+		var testsElement = document.getElementById("tests");
+		if (expectedResult === returnedResult) {
+			var newDiv=document.createElement('div') 
+			passes++; 
+			newDiv.style.backgroundColor='green';
+			newDiv.innerHTML = "Passed! "+ TestMyCode.nameOfTest;
+			newDiv.innerHTML = "Passed!" + TestMyCode.nameOfTest;
+			newDiv.style.width='300px';
+			newDiv.style.height='300px';
+			newDiv.className="test";
+			testsElement.appendChild(newDiv);
+			
+		}
+		else {
+
+			var newDiv=document.createElement('div')
+			fails++
+			newDiv.style.backgroundColor='red';
+			newDiv.innerHTML = "Failed!" + TestMyCode.nameOfTest;
+			newDiv.style.width='300px';
+			newDiv.style.height='300px';
+			newDiv.className="test";
+			testsElement.appendChild(newDiv);			
+		}
+
+
+		var stats = passes+fails;
+		var statsElement =  document.getElementById("results"); //document.createElement("p");
+		statsElement.innerHTML = "Passes: " + passes + " Fails: " + fails + " Total tests: " + stats;
+		//document.body.appendChild(newP);
+
+	}
+};
+
+var TestMyCode = {
+	run:function(nameOfTest, functionToExecute){
+
+		
+		
+		this.nameOfTest = nameOfTest;
+		functionToExecute(assert);
+	}
+};
+		 document.body.appendChild(results);
